@@ -31,8 +31,6 @@ module.exports = function (req, res) {
         ['content-length-range', 0, config.MAX_FILE_SIZE],
         ['starts-with', '$Content-Type', mimeType],
         { 'x-amz-server-side-encryption': xAmzServerSideEncryption },
-        // ['starts-with', '$x-amz-meta-tag', ''],
-
         { 'x-amz-credential': credential },
         { 'x-amz-algorithm': xAmzAlgorithm },
         { 'x-amz-date': xAmzDate },

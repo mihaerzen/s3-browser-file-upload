@@ -6,6 +6,7 @@ const cors = require('cors');
 const path = require('path');
 
 const sign = require('./sign');
+const config = require('./config');
 
 const app = express();
 
@@ -17,9 +18,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
   res.render('index', {
-    title: 'Hey',
-    bucketUri: '',
-    awsKey: '',
+    title: '🐶',
+    AWS_BUCKET: config.AWS_BUCKET,
+    AWS_REGION: config.AWS_REGION,
   });
 });
 

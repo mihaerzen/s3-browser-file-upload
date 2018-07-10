@@ -6,7 +6,8 @@ html(lang="en")
     meta(name="viewport" content="width=device-width")
     title= title
     script.
-      window.awsKey = "#{awsKey}";
+      window.AWS_BUCKET = "#{AWS_BUCKET}";
+      window.AWS_REGION = "#{AWS_REGION}";
 
   body
     form#form(method="post" enctype="multipart/form-data")

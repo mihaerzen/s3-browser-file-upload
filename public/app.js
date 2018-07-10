@@ -1,5 +1,3 @@
-/* eslint-disable no-underscore-dangle */
-
 (function () {
   function AjaxFileUploader() {
     this.submitFormData = function (uploadUrl, formData) {
@@ -17,9 +15,6 @@
       };
 
       xhr.open('POST', uploadUrl, true);
-
-      // xhr.setRequestHeader('Content-Type', 'multipart/form-data');
-
       xhr.send(formData);
     };
   }
@@ -49,32 +44,13 @@
         formData.append('Policy', response.policy);
         formData.append('X-Amz-Date', response.xAmzDate);
         formData.append('X-Amz-Signature', response.signature);
-
-        // formData.append('AWSAccessKeyId', window.awsKey);
-        // formData.append('success_action_status', '201');
         formData.append('file', file);
 
         console.log('uploading...');
-        ajaxFileUploader.submitFormData('https://voucher-manager-alpha.s3-eu-central-1.amazonaws.com', formData);
+        ajaxFileUploader.submitFormData(`https://${window.AWS_BUCKET}.s3-${window.AWS_REGION}.amazonaws.com`, formData);
       })
       .catch((err) => {
         console.error(err);
       });
-
-    // $.ajax({
-    //   url: "/signed",
-    //   type: 'GET',
-    //   dataType: 'json',
-    //   data: {title: data.files[0].name}, // Send filename to /signed for the signed response
-    //   async: false,
-    //   success: function(data) {
-    //     // Now that we have our data, we update the form so it contains all
-    //     // the needed data to sign the request
-    //     form.find('input[name=key]').val(data.key);
-    //     form.find('input[name=policy]').val(data.policy);
-    //     form.find('input[name=signature]').val(data.signature);
-    //     form.find('input[name=Content-Type]').val(data.contentType);
-    //   }
-    // })
   });
 }());
