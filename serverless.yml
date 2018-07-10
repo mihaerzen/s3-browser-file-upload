@@ -1,0 +1,20 @@
+service: s3-direct-file-upload
+
+custom:
+  defaultStage: alpha
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: ${opt:stage, self:custom.defaultStage}
+  region: eu-central-1
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - 's3:PutObject'
+      Resource:
+        - 'arn:aws:s3:::voucher-manager-alpha'
+
+functions:
+  upload:
+    handler: app/handler.upload

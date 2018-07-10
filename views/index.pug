@@ -1,0 +1,16 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
+    meta(name="viewport" content="width=device-width")
+    title= title
+    script.
+      window.awsKey = "#{awsKey}";
+
+  body
+    form#form(method="post" enctype="multipart/form-data")
+      input#fileInput(type='file')
+      button(type='submit') Upload
+
+    script(src='app.js')
